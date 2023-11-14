@@ -50,6 +50,17 @@ public class Curso {
         return listadoAlumnos;
     }
 
+    @Override
+    public String toString() {
+        return  "\n[Curso\n" +
+                "Nombre = " + nombre + "\n" +
+                "Catedra = " + catedra + "\n" +
+                "Descripcion = " + descripcion + "\n" +
+                "Profesor = " + profesor + "\n" +
+                "Costo = " + costo + "\n" +
+                "IsOnline = " + isOnline + "\n" +
+                "ListadoAlumnos = " + listadoAlumnos + "\n" + "]";
+    }
     public static class Builder {
 
         public Curso build() {return new Curso(this);}
