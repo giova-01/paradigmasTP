@@ -59,7 +59,7 @@ public class Curso {
                 "Profesor = " + profesor + "\n" +
                 "Costo = " + costo + "\n" +
                 "IsOnline = " + isOnline + "\n" +
-                "ListadoAlumnos = " + listadoAlumnos + "\n" + "]";
+                "ListadoAlumnos = " + listadoAlumnos + "]" + "\n";
     }
     public static class Builder {
 
