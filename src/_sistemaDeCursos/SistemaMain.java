@@ -1,75 +1,28 @@
 package _sistemaDeCursos;
 
-import gestionDeAlumnos.cursos.Curso;
-import java.util.Scanner;
+import gestion.Usuarios.Profesor;
+import gestion.cursos.Curso;
+import gestion.cursos.GestorCursos;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
 
 public class SistemaMain {
     public static void main(String[] args) {
-        boolean salir = false;
-        byte elección = 0;
-        Scanner sc =  new Scanner(System.in);
 
-        while (!salir) {
+        Curso cursoPresencialEjemplo = new Curso.Builder()
+                .setNombre("Programación en Java")
+                .setCatedra(UUID.randomUUID().toString())
+                .setDescripcion("Introducción a la programación en Java")
+                .setObjetivo("Aprender los fundamentos de Java")
+                .setDirigidoA("Estudiantes de informática")
+                .setProfesor(new Profesor("Jorge","Giraudo","43881292", new Date(10), "Soy Un profesor, creanme"))
+                .setListadoAlumnos(new ArrayList<>(14))
+                .setCosto(150.0)
+                .build();
 
-            System.out.println("\n=====================================" +
-                               "\n          CP Group S.A.S" +
-                               "\n=====================================" +
-                               "\nPor Favor ingrese una opción:" +
-                               "\n1 - Registrar Alumno" +
-                               "\n2 - Modificar Alumno" +
-                               "\n3 - Listar Alumnos" +
-                               "\n4 - Registrar Profesor" +
-                               "\n5 - Modificar Profesor" +
-                               "\n6 - Listar Profesores" +
-                               "\n7 - Crear Curso" +
-                               "\n8 - Listar Curso" +
-                               "\n9 - Salir");
-            elección = sc.nextByte();
-
-            switch (elección) {
-                case 1 -> {
-                    System.out.println("TODO: registrarAlumno");
-                }
-                case 2 ->{
-                    System.out.println("TODO: registrarProfesor");
-                }
-                case 7 -> {
-                    // Esto esta horrible pero es para testear el builder de los cursos :)
-                    System.out.println("Ingrese nombre del curso nuevo:");
-                    sc.nextLine();
-                    String tempNombre = sc.nextLine();
-                    System.out.println("Ingrese catedra del curso nuevo:");
-                    String tempCatedra = sc.nextLine();
-                    System.out.println("Ingrese una descripción al curso nuevo:");
-                    String tempDescripcion = sc.nextLine();
-                    System.out.println("Ingrese un profesor al curso nuevo:"); //TODO llamar FactoryProfesor
-                    String tempProfesor = sc.nextLine();
-                    System.out.println("Ingrese un costo al curso nuevo:");
-                    double tempCosto = sc.nextDouble();
-                    System.out.println("El curso nuevo es online? true/false:");
-                    boolean tempIsOnline = sc.nextBoolean();
-
-
-                    /* TODO llamar FactoryAlumno
-                    System.out.println("Ingrese una lista de alumnos");
-                    List tempListaAlumnos = new ArrayList<>();
-                    */
-
-                    Curso curso = new Curso.Builder()
-                            .setNombre(tempNombre)
-                            .setCatedra(tempCatedra)
-                            .setDescripcion(tempDescripcion)
-                            .setProfesor(tempProfesor)
-                            .setCosto(tempCosto)
-                            .setOnline(tempIsOnline).build();
-
-                    System.out.println("Se creo un nuevo curso:\n" + curso.toString());
-
-                }
-                case 9 -> {
-                    salir = true;
-                }
-            }
-        }
+        GestorCursos gestor = new GestorCursos();
+        gestor.registrarCursoPresencial(cursoPresencialEjemplo);
     }
 }

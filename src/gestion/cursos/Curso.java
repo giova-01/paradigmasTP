@@ -1,4 +1,7 @@
-package gestionDeAlumnos.cursos;
+package gestion.cursos;
+
+import gestion.Usuarios.Alumno;
+import gestion.Usuarios.Profesor;
 
 import java.util.List;
 
@@ -6,19 +9,21 @@ public class Curso {
     private final String nombre;
     private final String catedra;
     private final String descripcion;
-    private final String profesor;
+    private String objetivo;
+    private String dirigidoA;
+    private final Profesor profesor;
     private final double costo;
-    private final boolean isOnline;
-    private final List listadoAlumnos;
+    private final List<Alumno> listadoAlumnos;
 
 
     public Curso(Builder builder) {
         this.nombre = builder.nombre;
         this.catedra = builder.catedra;
         this.descripcion = builder.descripcion;
+        this.objetivo = builder.objetivo;
+        this.dirigidoA = builder.dirigidoA;
         this.profesor = builder.profesor;
         this.costo = builder.costo;
-        this.isOnline = builder.isOnline;
         this.listadoAlumnos = builder.listadoAlumnos;
     }
 
@@ -34,16 +39,20 @@ public class Curso {
         return descripcion;
     }
 
-    public String getProfesor() {
+    public String getObjetivo() {
+        return  objetivo;
+    }
+
+    public  String getDirigidoA() {
+        return  dirigidoA;
+    }
+
+    public Profesor getProfesor() {
         return profesor;
     }
 
     public double getCosto() {
         return costo;
-    }
-
-    public boolean isOnline() {
-        return isOnline;
     }
 
     public List getListadoAlumnos() {
@@ -56,9 +65,10 @@ public class Curso {
                 "Nombre = " + nombre + "\n" +
                 "Catedra = " + catedra + "\n" +
                 "Descripcion = " + descripcion + "\n" +
+                "Objetivo = " + objetivo + "\n" +
+                "DirigidoA = " + dirigidoA + "\n" +
                 "Profesor = " + profesor + "\n" +
                 "Costo = " + costo + "\n" +
-                "IsOnline = " + isOnline + "\n" +
                 "ListadoAlumnos = " + listadoAlumnos + "]" + "\n";
     }
     public static class Builder {
@@ -68,9 +78,10 @@ public class Curso {
         private String nombre;
         private String catedra;
         private String descripcion;
-        private String profesor;
+        private String objetivo;
+        private String dirigidoA;
+        private Profesor profesor;
         private double costo;
-        private boolean isOnline;
         private List listadoAlumnos;
 
 
@@ -89,7 +100,17 @@ public class Curso {
             return this;
         }
 
-        public Curso.Builder setProfesor(String profesor) {
+        public Curso.Builder setObjetivo(String objetivo) {
+            this.objetivo = objetivo;
+            return this;
+        }
+
+        public  Curso.Builder setDirigidoA (String dirigidoA) {
+            this.dirigidoA = dirigidoA;
+            return  this;
+        }
+
+        public Curso.Builder setProfesor(Profesor profesor) {
             this.profesor = profesor;
             return this;
         }
@@ -99,16 +120,9 @@ public class Curso {
             return this;
         }
 
-        public Curso.Builder setOnline(boolean online) {
-            isOnline = online;
-            return this;
-        }
-
         public Curso.Builder setListadoAlumnos(List listadoAlumnos) {
             this.listadoAlumnos = listadoAlumnos;
             return this;
         }
     }
 }
-
-
