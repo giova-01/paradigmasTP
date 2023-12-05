@@ -10,8 +10,17 @@ public class GestorCursos{
     private List<Curso> cursosPresenciales = new ArrayList<>();
     private List<Curso> cursosVirtuales = new ArrayList<>();
 
+    public List<Curso> getCursosPresenciales() {
+        return cursosPresenciales;
+    }
 
-     public void registrarCursoPresencial(Curso nuevoCurso) {
+    public List<Curso> getCursosVirtuales() {
+        return cursosVirtuales;
+    }
+
+
+
+    public void registrarCursoPresencial(Curso nuevoCurso) {
 
         if (!docenteDisponible(nuevoCurso)) {
             System.out.println("Error: El docente ya tiene asignado otro curso en el mismo horario o día.");
@@ -57,7 +66,7 @@ public class GestorCursos{
 
 
     public void registrarCursoVirtual(Curso nuevoCurso) {
-        //TODO: Implementar lógica para registrar el curso virtual, que es casi igual creo
+        cursosVirtuales.add(nuevoCurso);
     }
 
 
