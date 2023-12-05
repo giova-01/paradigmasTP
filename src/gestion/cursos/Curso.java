@@ -3,17 +3,18 @@ package gestion.cursos;
 import gestion.Usuarios.Alumno;
 import gestion.Usuarios.Profesor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
     private final String nombre;
     private final String catedra;
     private final String descripcion;
-    private String objetivo;
-    private String dirigidoA;
+    private final String objetivo;
+    private final String dirigidoA;
     private final Profesor profesor;
     private final double costo;
-    private final List<Alumno> listadoAlumnos;
+    private List<Alumno> listadoAlumnos;
 
 
     public Curso(Builder builder) {
@@ -55,7 +56,7 @@ public class Curso {
         return costo;
     }
 
-    public List getListadoAlumnos() {
+    public List<Alumno> getListadoAlumnos() {
         return listadoAlumnos;
     }
 
@@ -82,7 +83,7 @@ public class Curso {
         private String dirigidoA;
         private Profesor profesor;
         private double costo;
-        private List listadoAlumnos;
+        private List<Alumno> listadoAlumnos;
 
 
         public Curso.Builder setNombre(String nombre) {
@@ -120,7 +121,7 @@ public class Curso {
             return this;
         }
 
-        public Curso.Builder setListadoAlumnos(List listadoAlumnos) {
+        public Curso.Builder setListadoAlumnos(List<Alumno> listadoAlumnos) {
             this.listadoAlumnos = listadoAlumnos;
             return this;
         }

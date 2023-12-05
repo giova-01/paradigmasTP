@@ -5,8 +5,8 @@ import java.util.Date;
 
 // Clase Docente con un constructor Builder
 public class Profesor extends Usuario {
-    private String curriculumVitae;
-    private int id;
+    private final String curriculumVitae;
+    private final int id;
 
     private Profesor(ProfeBuilder builder) {
         super(builder.nombre, builder.apellido, builder.dni, builder.fechaNacimiento, builder.edad);
@@ -19,10 +19,27 @@ public class Profesor extends Usuario {
         return curriculumVitae;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor{" +
+                "curriculumVitae='" + curriculumVitae + '\'' +
+                ", id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", edad=" + edad +
+                '}';
+    }
+
     public static class ProfeBuilder {
-        private String nombre;
-        private String apellido;
-        private String dni;
+        private final String nombre;
+        private final String apellido;
+        private final String dni;
         private Date fechaNacimiento;
         private int edad;
         private String curriculumVitae;

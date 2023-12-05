@@ -6,6 +6,7 @@ import gestion.cursos.Curso;
 import gestion.cursos.GestorCursos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
 
@@ -19,6 +20,13 @@ public class SistemaMain {
                 .edad(30)
                 .build();
 
+        //Creacion de un alumno
+        Alumno alumnoEjemplo = new Alumno.AlumnoBuilder("Juan", "Perez", "12345678")
+                .fechaNacimiento(new Date())
+                .edad(20)
+                .legajo()
+                .build();
+
         //Creacion de un curso presencial
         Curso cursoPresencialEjemplo = new Curso.Builder()
                 .setNombre("Programación en Java")
@@ -27,19 +35,16 @@ public class SistemaMain {
                 .setObjetivo("Aprender los fundamentos de Java")
                 .setDirigidoA("Estudiantes de informática")
                 .setProfesor(docenteejemplo)
-                .setListadoAlumnos(new ArrayList<>(14))
+                .setListadoAlumnos(new ArrayList<Alumno>(14))
                 .setCosto(150.0)
                 .build();
 
-        //Temgo que instanciar el gestor de cursos, no lo puedo poner static
+        //Tengo que instanciar el gestor de cursos, no lo puedo poner static
         GestorCursos gestor = new GestorCursos();
         gestor.registrarCursoPresencial(cursoPresencialEjemplo);
 
-        //Creacion de un alumno
-        Alumno alumno = new Alumno.AlumnoBuilder("Juan", "Perez", "12345678")
-                .fechaNacimiento(new Date())
-                .edad(20)
-                .legajo()
-                .build();
+
+        //Printeo curso
+        System.out.print(cursoPresencialEjemplo.toString());
     }
 }

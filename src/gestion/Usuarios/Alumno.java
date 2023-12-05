@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Alumno extends Usuario {
-    private String legajo;
-    private int id;
+    private final String legajo;
+    private final int id;
 
     private Alumno(AlumnoBuilder builder) {
         super(builder.nombre, builder.apellido, builder.dni, builder.fechaNacimiento, builder.edad);
@@ -15,6 +15,23 @@ public class Alumno extends Usuario {
 
     public String getLegajo() {
         return legajo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "legajo='" + legajo + '\'' +
+                ", id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", edad=" + edad +
+                '}';
     }
 
     public static class AlumnoBuilder {
